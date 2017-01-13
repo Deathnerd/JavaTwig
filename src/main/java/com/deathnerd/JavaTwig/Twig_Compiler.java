@@ -1,7 +1,5 @@
 package com.deathnerd.JavaTwig;
 
-import com.sun.deploy.util.StringUtils;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
@@ -211,7 +209,7 @@ public class Twig_Compiler {
             byte[] digestBytes = md.digest();
             out = String.format("__internal_%s", Base64.getEncoder().encodeToString(digestBytes));
         } catch (NoSuchAlgorithmException e) {
-            // empty catch because we can always generate this algorithm
+            Twig.logger.error(e.getMessage());
         }
 
         return out;
